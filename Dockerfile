@@ -8,14 +8,11 @@ RUN dotnet restore
 COPY . ./
 # Publish the app
 RUN dotnet publish -c Release -o out
-
 # Runtime stage
 FROM mcr.microsoft.com/dotnet/aspnet:8.0
 WORKDIR /app
 COPY --from=build-env /app/out .
-
 # Expose port 1000 so Docker knows the container listens here
 EXPOSE 1000
-
-# Entry point
+# Entry point        bura elave seyler yaziramki file modify olsun
 ENTRYPOINT ["dotnet", "MyWebApp.dll"]
