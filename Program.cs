@@ -1,12 +1,8 @@
 var builder = WebApplication.CreateBuilder(args);
 
-// Set the app to listen on port 1000
-builder.WebHost.UseUrls("http://*:1000");
-
 // Add services to the container.
-
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+// Swagger for dev
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -25,4 +21,11 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+// Add a simple root endpoint so browsing / shows something
+app.MapGet("/", () => "Hello from ASP.NET Core on port 1000!");
+
+// Bind the app to port 1000
+app.Urls.Add("http://*:1000");
+
+// Run the app
 app.Run();
