@@ -19,5 +19,5 @@ WORKDIR /app
 COPY --from=build-env /app/out .
 # Expose port 1000 so Docker knows the container listens here
 EXPOSE 1000
-# Entry point        bura elave seyler yaziramki file modify olsun
+# Entry point        bura elave seyler yaziramki file modify olsun alinda nolar
 ENTRYPOINT ["dotnet", "MyWebApp.dll"]
