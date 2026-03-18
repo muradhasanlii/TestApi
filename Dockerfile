@@ -16,4 +16,9 @@ RUN dotnet publish -c Release -o out
 FROM mcr.microsoft.com/dotnet/aspnet:8.0
 WORKDIR /app
 COPY --from=build-env /app/out .
+
+# Expose port 1000 so Docker knows the container listens here
+EXPOSE 1000
+
+# Entry point
 ENTRYPOINT ["dotnet", "MyWebApp.dll"]
