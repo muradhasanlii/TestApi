@@ -1,14 +1,11 @@
 # Build stage
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build-env
 WORKDIR /app
-
 # Copy csproj and restore NuGet packages
 COPY *.csproj ./
 RUN dotnet restore
-
 # Copy the rest of the source code
 COPY . ./
-
 # Publish the app
 RUN dotnet publish -c Release -o out
 
